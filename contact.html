@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact — CURATOR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        function copyToClipboard(text, element) {
+            const feedback = element.querySelector('.copy-feedback');
+            const handle = element.querySelector('span:first-child');
+
+            const executeCopy = () => {
+                feedback.classList.add('active');
+                handle.classList.add('text-primary');
+                handle.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    feedback.classList.remove('active');
+                    handle.classList.remove('text-primary');
+                    handle.style.transform = '';
+                }, 700);
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(executeCopy);
+            } else {
+                // Fallback method
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                textArea.style.top = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    executeCopy();
+                } catch (err) {
+                    console.error('Fallback copy failed', err);
+                }
+                textArea.remove();
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .liquid-glass {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .liquid-glass::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 70%);
+            transform: scale(0);
+            transition: transform 0.8s ease-out;
+            pointer-events: none;
+        }
+        .liquid-glass:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.15), 0 30px 60px -30px rgba(0,0,0,0.2);
+        }
+        .liquid-glass:hover::before {
+            transform: scale(1);
+        }
+        
+        .copy-feedback {
+            color: #aaa;
+            font-size: 0.65rem;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.02em;
+            opacity: 0;
+            pointer-events: none;
+            white-space: nowrap;
+            transition: opacity 0.15s ease;
+        }
+        .copy-feedback.active {
+            opacity: 1;
+        }
+    
+        @keyframes revealText {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .reveal-anim {
+            display: inline-block;
+            animation: revealText 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .group\/handle:hover span:first-child {
+            transform: translateY(-2px);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .group\/handle span:first-child {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+        }
+    nav a:focus { outline: none !important; }</style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden">
+<!-- Shared TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fbf9f9]/80 backdrop-blur-xl">
+<div class="flex items-center px-8 py-10 max-w-[1440px] mx-auto w-full">
+<div class="flex-1 text-2xl font-bold tracking-tighter text-[#000000]">nealCS</div>
+<nav class="hidden md:flex items-center gap-12">
+<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#4c4546] hover:text-[#000000] transition-all duration-300" href="index.html">Projects</a>
+<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#000000] border-b border-[#000000] pb-1" href="contact.html">Contact</a>
+</nav>
+<div class="flex-1"></div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="min-h-screen flex items-start justify-center px-8 pt-36">
+<div class="flex flex-col md:flex-row items-start justify-center gap-12 md:gap-16 w-full max-w-[1400px]">
+<!-- Discord -->
+<div class="flex flex-col w-full md:w-auto">
+<div class="liquid-glass w-full aspect-square md:w-[360px] md:h-[360px] bg-[#5865F2] rounded-[24px] flex items-center justify-center cursor-pointer shadow-xl mb-12">
+<svg fill="white" height="140" viewbox="0 0 24 24" width="140"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037 19.736 19.736 0 0 0-4.885 1.515.069.069 0 0 0-.032.027C.533 9.048-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.006 14.006 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.23 10.23 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .077.01c.124.097.248.196.372.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"></path></svg>
+</div>
+<div class="relative group">
+<div class="mb-2">
+<span class="font-['Inter'] text-[0.65rem] uppercase tracking-[0.25em] font-bold text-on-surface-variant opacity-40">discord</span>
+</div>
+<div class="flex items-center gap-3 cursor-pointer group/handle" onclick="copyToClipboard('nealcsgo', this)">
+<span class="font-mono text-xl tracking-tight text-on-surface hover:text-primary transition-colors reveal-anim">nealcsgo</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover/handle:opacity-30 transition-opacity">content_copy</span>
+<span class="copy-feedback">Copied</span>
+</div>
+</div>
+</div>
+<!-- Email -->
+<div class="flex flex-col w-full md:w-auto">
+<div class="liquid-glass w-full aspect-square md:w-[360px] md:h-[360px] bg-[#111] rounded-[24px] flex items-center justify-center cursor-pointer shadow-xl mb-12">
+<span class="material-symbols-outlined text-white text-[140px] font-thin">mail</span>
+</div>
+<div class="relative group">
+<div class="mb-2">
+<span class="font-['Inter'] text-[0.65rem] uppercase tracking-[0.25em] font-bold text-on-surface-variant opacity-40">email</span>
+</div>
+<div class="flex items-center gap-3 cursor-pointer group/handle" onclick="copyToClipboard('neal@ncys.me', this)">
+<span class="font-mono text-xl tracking-tight text-on-surface hover:text-primary transition-colors reveal-anim">neal@ncys.me</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover/handle:opacity-30 transition-opacity">content_copy</span>
+<span class="copy-feedback">Copied</span>
+</div>
+</div>
+</div>
+<!-- Twitter -->
+<div class="flex flex-col w-full md:w-auto">
+<div class="liquid-glass w-full aspect-square md:w-[360px] md:h-[360px] bg-[#000000] rounded-[24px] flex items-center justify-center cursor-pointer shadow-xl mb-12">
+<svg fill="white" height="120" viewbox="0 0 24 24" width="120"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</div>
+<div class="relative group">
+<div class="mb-2">
+<span class="font-['Inter'] text-[0.65rem] uppercase tracking-[0.25em] font-bold text-on-surface-variant opacity-40">twitter / x</span>
+</div>
+<div class="flex items-center gap-3 cursor-pointer group/handle" onclick="copyToClipboard('nealcsgo', this)">
+<span class="font-mono text-xl tracking-tight text-on-surface hover:text-primary transition-colors reveal-anim">nealcsgo</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover/handle:opacity-30 transition-opacity">content_copy</span>
+<span class="copy-feedback">Copied</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Editorial grid lines -->
+<div class="fixed inset-0 pointer-events-none z-[-1] opacity-5">
+<div class="h-full w-full max-w-[1440px] mx-auto border-x border-outline"></div>
+</div>
+<script>
+        function copyToClipboard(text, element) {
+            const feedback = element.querySelector('.copy-feedback');
+            const handle = element.querySelector('span:first-child');
+
+            const executeCopy = () => {
+                feedback.classList.add('active');
+                handle.classList.add('text-primary');
+                handle.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    feedback.classList.remove('active');
+                    handle.classList.remove('text-primary');
+                    handle.style.transform = '';
+                }, 700);
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(executeCopy);
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                textArea.style.top = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    executeCopy();
+                } catch (err) {
+                    console.error('Fallback copy failed', err);
+                }
+                textArea.remove();
+            }
+        }
+    </script>
+</body></html>

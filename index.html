@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#e4e2e1",
+                    "on-surface": "#1b1c1c",
+                    "on-primary-fixed": "#1b1b1b",
+                    "outline": "#7e7576",
+                    "surface-container-low": "#f5f3f3",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "background": "#fbf9f9",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "surface-tint": "#5e5e5e",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#c6c6c6",
+                    "inverse-surface": "#303031",
+                    "surface-dim": "#dbdad9",
+                    "surface-container-high": "#e9e8e7",
+                    "on-tertiary-container": "#848483",
+                    "surface": "#fbf9f9",
+                    "on-primary-fixed-variant": "#474747",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#e4e2e2",
+                    "secondary-container": "#e4e2e1",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#848484",
+                    "primary-container": "#1b1b1b",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fbf9f9",
+                    "on-error": "#ffffff",
+                    "secondary": "#5f5e5e",
+                    "on-background": "#1b1c1c",
+                    "on-secondary-fixed-variant": "#474746",
+                    "surface-variant": "#e3e2e2",
+                    "on-secondary-container": "#656464",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "surface-container-highest": "#e3e2e2",
+                    "primary": "#000000",
+                    "surface-container": "#efeded",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "tertiary-container": "#1b1c1c",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#e2e2e2",
+                    "outline-variant": "#cfc4c5",
+                    "on-surface-variant": "#4c4546",
+                    "inverse-on-surface": "#f2f0f0",
+                    "tertiary": "#000000"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        /* Gallery Scroll Snap */
+        .gallery-container {
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .gallery-container::-webkit-scrollbar {
+            display: none;
+        }
+        .gallery-item {
+            scroll-snap-align: center;
+            flex-shrink: 0;
+        }
+    nav a:focus { outline: none; }</style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fbf9f9]/80 backdrop-blur-xl">
+<div class="flex items-center px-8 py-10 max-w-[1440px] mx-auto w-full">
+<div class="flex-1 text-2xl font-bold tracking-tighter text-[#000000]">nealCS</div>
+<nav class="hidden md:flex items-center gap-12">
+<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#000000] border-b border-[#000000] pb-1" href="index.html">Projects</a>
+<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#4c4546] hover:text-[#000000] transition-all duration-300" href="contact.html">Contact</a>
+</nav>
+<div class="flex-1"></div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-24">
+<h1 class="text-[3.5rem] font-bold tracking-[-0.02em] leading-tight text-primary">
+                Project Experience
+            </h1>
+<div class="h-px w-24 bg-primary mt-8"></div>
+</section>
+<!-- Projects Grid -->
+<div class="flex flex-col gap-32">
+<!-- Project 01: Qwerties for Glitched -->
+<article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-4 sticky top-32">
+<h2 class="text-[1.5rem] font-semibold tracking-[-0.01em] mb-6">
+                        Qwerties for <a class="group/ext hover:opacity-60 transition-opacity" href="https://glitched.se/en/" target="_blank">Glitched<span class="inline-block opacity-0 group-hover/ext:opacity-100 transition-opacity text-[0.7em] align-super ml-0.5">↗</span></a>
+</h2>
+<p class="text-body-md text-on-surface-variant leading-relaxed max-w-md">
+                        A comprehensive digital exploration into modular keyboard aesthetics and experimental interface design. This project focuses on the intersection of tactile hardware and fluid digital motion.
+                    </p>
+</div>
+<div class="lg:col-span-8 relative group">
+<div class="gallery-container flex overflow-x-auto w-full gap-4 pb-4" id="carousel-qwerties">
+<!-- Slide 1 -->
+<div class="gallery-item w-full aspect-[16/10] bg-red-600 flex items-center justify-center text-white font-bold" data-alt="vibrant red solid color field representing a bold minimalist aesthetic">
+<span class="text-sm opacity-50">IMAGE_01</span>
+</div>
+<!-- Slide 2 -->
+<div class="gallery-item w-full aspect-[16/10] bg-green-600 flex items-center justify-center text-white font-bold" data-alt="deep green solid color field representing organic growth and stability">
+<span class="text-sm opacity-50">IMAGE_02</span>
+</div>
+<!-- Slide 3 -->
+<div class="gallery-item w-full aspect-[16/10] bg-blue-600 flex items-center justify-center text-white font-bold" data-alt="bright blue solid color field representing digital precision and clarity">
+<span class="text-sm opacity-50">IMAGE_03</span>
+</div>
+<!-- Slide 4 -->
+<div class="gallery-item w-full aspect-[16/10] bg-yellow-400 flex items-center justify-center text-black font-bold" data-alt="sunny yellow solid color field representing energy and focal points">
+<span class="text-sm opacity-50">IMAGE_04</span>
+</div>
+<!-- Slide 5 -->
+<div class="gallery-item w-full aspect-[16/10] bg-purple-600 flex items-center justify-center text-white font-bold" data-alt="royal purple solid color field representing luxury and creative depth">
+<span class="text-sm opacity-50">IMAGE_05</span>
+</div>
+</div>
+<!-- Navigation Controls -->
+<div class="absolute inset-y-0 left-4 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button aria-label="Previous Slide" class="bg-white/90 p-2 shadow-sm hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-primary">chevron_left</span>
+</button>
+</div>
+<div class="absolute inset-y-0 right-4 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button aria-label="Next Slide" class="bg-white/90 p-2 shadow-sm hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-primary">chevron_right</span>
+</button>
+</div>
+<!-- Pagination Indicators -->
+<div class="flex gap-2 mt-4 justify-center">
+<div class="w-8 h-1 bg-primary indicator-dot"></div>
+<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
+<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
+<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
+<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
+</div>
+</div>
+</article>
+<!-- Project 02: Stickerlounge -->
+<article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-4 sticky top-32 lg:order-2">
+<h2 class="text-[1.5rem] font-semibold tracking-[-0.01em] mb-6">
+                        Stickerlounge
+                    </h2>
+<p class="text-body-md text-on-surface-variant leading-relaxed max-w-md">
+                        Redefining the e-commerce experience for physical art assets. Focus on ultra-clean typography and a friction-less checkout journey that mirrors the premium nature of the products.
+                    </p>
+</div>
+<div class="lg:col-span-8 lg:order-1 relative group">
+<div class="gallery-container flex overflow-x-auto w-full gap-4 pb-4" id="carousel-stickerlounge">
+<!-- Slide 1 -->
+<div class="gallery-item w-full aspect-[16/10] bg-blue-600 flex items-center justify-center text-white font-bold" data-alt="bright blue solid color field representing digital precision and clarity">
+<span class="text-sm opacity-50">IMAGE_01</span>
+</div>
+<!-- Slide 2 -->
+<div class="gallery-item w-full aspect-[16/10] bg-red-600 flex items-center justify-center text-white font-bold" data-alt="vibrant red solid color field representing a bold minimalist aesthetic">
+<span class="text-sm opacity-50">IMAGE_02</span>
+</div>
+<!-- Slide 3 -->
+<div class="gallery-item w-full aspect-[16/10] bg-purple-600 flex items-center justify-center text-white font-bold" data-alt="royal purple solid color field representing luxury and creative depth">
+<span class="text-sm opacity-50">IMAGE_03</span>
+</div>
+<!-- Slide 4 -->
+<div class="gallery-item w-full aspect-[16/10] bg-yellow-400 flex items-center justify-center text-black font-bold" data-alt="sunny yellow solid color field representing energy and focal points">
+<span class="text-sm opacity-50">IMAGE_04</span>
+</div>
+<!-- Slide 5 -->
+<div class="gallery-item w-full aspect-[16/10] bg-green-600 flex items-center justify-center text-white font-bold" data-alt="deep green solid color field representing organic growth and stability">
+<span class="text-sm opacity-50">IMAGE_05</span>
+</div>
+</div>
+<!-- Navigation Controls -->
+<div class="absolute inset-y-0 left-4 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button aria-label="Previous Slide" class="bg-white/90 p-2 shadow-sm hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-primary">chevron_left</span>
+</button>
+</div>
+<div class="absolute inset-y-0 right-4 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button aria-label="Next Slide" class="bg-white/90 p-2 shadow-sm hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-primary">chevron_right</span>
+</button>
+</div>
+<!-- Pagination Indicators -->
+<div class="flex gap-2 mt-4 justify-center">
+<div class="w-8 h-1 bg-primary indicator-dot"></div>
+<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
+<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
+<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
+<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- SideNavBar (Mobile) -->
+<aside class="hidden h-full w-64 border-r-0 bg-[#fbf9f9] dark:bg-black flex-col p-8 fixed left-0 top-0 z-[60] lg:hidden">
+<div class="text-lg font-bold text-black dark:text-white mb-2">nealCS</div>
+<div class="text-[0.75rem] font-['Inter'] uppercase tracking-[0.05em] text-neutral-400 dark:text-neutral-600 mb-12">Digital Curator</div>
+<nav class="flex flex-col gap-6">
+<a class="flex items-center gap-4 text-black dark:text-white font-bold uppercase tracking-[0.05em] text-[0.75rem]" href="index.html">
+<span class="material-symbols-outlined">work</span>
+                Projects
+            </a>
+<a class="flex items-center gap-4 text-neutral-400 dark:text-neutral-600 uppercase tracking-[0.05em] text-[0.75rem] hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all duration-300" href="contact.html">
+<span class="material-symbols-outlined">mail</span>
+                Contact
+            </a>
+</nav>
+</aside>
+<script>
+  function initCarousel(carouselId) {
+    const container = document.getElementById(carouselId);
+    const wrapper = container.parentElement;
+    const items = Array.from(container.querySelectorAll('.gallery-item'));
+    const prevBtn = wrapper.querySelector('[aria-label="Previous Slide"]');
+    const nextBtn = wrapper.querySelector('[aria-label="Next Slide"]');
+    const indicators = Array.from(wrapper.querySelectorAll('.indicator-dot'));
+
+    const getActiveIndex = () => {
+      let closest = 0, minDist = Infinity;
+      items.forEach((item, i) => {
+        const dist = Math.abs(item.offsetLeft - container.scrollLeft);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      return closest;
+    };
+
+    const updateIndicators = () => {
+      const active = getActiveIndex();
+      indicators.forEach((dot, i) => {
+        dot.classList.toggle('bg-primary', i === active);
+        dot.classList.toggle('bg-surface-container-highest', i !== active);
+      });
+    };
+
+    prevBtn.addEventListener('click', () => {
+      const idx = Math.max(getActiveIndex() - 1, 0);
+      container.scrollTo({ left: items[idx].offsetLeft, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const idx = Math.min(getActiveIndex() + 1, items.length - 1);
+      container.scrollTo({ left: items[idx].offsetLeft, behavior: 'smooth' });
+    });
+
+    container.addEventListener('scroll', updateIndicators);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initCarousel('carousel-qwerties');
+    initCarousel('carousel-stickerlounge');
+  });
+</script></body></html>
