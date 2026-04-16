@@ -75,19 +75,22 @@
         .liquid-glass:hover::before {
             transform: scale(1);
         }
-        
+
         .copy-feedback {
-            color: #aaa;
-            font-size: 0.65rem;
+            color: #777;
+            font-size: 0.75rem;
             font-family: 'Inter', sans-serif;
-            letter-spacing: 0.02em;
+            font-weight: 400;
+            letter-spacing: 0;
             opacity: 0;
+            transform: translateY(3px);
             pointer-events: none;
             white-space: nowrap;
-            transition: opacity 0.15s ease;
+            transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .copy-feedback.active {
             opacity: 1;
+            transform: translateY(0);
         }
     
         @keyframes revealText {
@@ -114,6 +117,7 @@
 <div class="flex-1 text-2xl font-bold tracking-tighter text-[#000000]">nealCS</div>
 <nav class="hidden md:flex items-center gap-12">
 <a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#4c4546] hover:text-[#000000] transition-all duration-300" href="index.html">Projects</a>
+<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#4c4546] hover:text-[#000000] transition-all duration-300" href="services.html">Services</a>
 <a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#000000] border-b border-[#000000] pb-1" href="contact.html">Contact</a>
 </nav>
 <div class="flex-1"></div>
@@ -131,8 +135,8 @@
 <div class="mb-2">
 <span class="font-['Inter'] text-[0.65rem] uppercase tracking-[0.25em] font-bold text-on-surface-variant opacity-40">discord</span>
 </div>
-<div class="flex items-center gap-3 cursor-pointer group/handle" onclick="copyToClipboard('nealcsgo', this)">
-<span class="font-mono text-xl tracking-tight text-on-surface hover:text-primary transition-colors reveal-anim">nealcsgo</span>
+<div class="flex items-center gap-3 cursor-pointer group/handle" onclick="copyToClipboard('nealCSGO', this)">
+<span class="font-mono text-xl tracking-tight text-on-surface hover:text-primary transition-colors reveal-anim">nealCSGO</span>
 <span class="material-symbols-outlined text-sm opacity-0 group-hover/handle:opacity-30 transition-opacity">content_copy</span>
 <span class="copy-feedback">Copied</span>
 </div>
@@ -163,10 +167,9 @@
 <div class="mb-2">
 <span class="font-['Inter'] text-[0.65rem] uppercase tracking-[0.25em] font-bold text-on-surface-variant opacity-40">twitter / x</span>
 </div>
-<div class="flex items-center gap-3 cursor-pointer group/handle" onclick="copyToClipboard('nealcsgo', this)">
-<span class="font-mono text-xl tracking-tight text-on-surface hover:text-primary transition-colors reveal-anim">nealcsgo</span>
-<span class="material-symbols-outlined text-sm opacity-0 group-hover/handle:opacity-30 transition-opacity">content_copy</span>
-<span class="copy-feedback">Copied</span>
+<a href="https://x.com/nealCSGO" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 cursor-pointer group/handle">
+<span class="font-mono text-xl tracking-tight text-on-surface hover:text-primary transition-colors reveal-anim">nealCSGO<span class="inline-block text-[0.7em] align-super ml-0.5 font-bold">↗</span></span>
+</a>
 </div>
 </div>
 </div>

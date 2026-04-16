@@ -87,18 +87,28 @@
             white-space: nowrap;
             direction: ltr;
         }
-        /* Gallery Scroll Snap */
         .gallery-container {
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        .gallery-container::-webkit-scrollbar {
-            display: none;
+            position: relative;
+            overflow: hidden;
         }
         .gallery-item {
-            scroll-snap-align: center;
-            flex-shrink: 0;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: scale(1.04);
+            transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+        .gallery-item.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+        .indicator-dot {
+            transition: background-color 0.3s ease;
         }
     nav a:focus { outline: none; }</style>
 </head>
@@ -109,6 +119,7 @@
 <div class="flex-1 text-2xl font-bold tracking-tighter text-[#000000]">nealCS</div>
 <nav class="hidden md:flex items-center gap-12">
 <a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#000000] border-b border-[#000000] pb-1" href="index.html">Projects</a>
+<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#4c4546] hover:text-[#000000] transition-all duration-300" href="services.html">Services</a>
 <a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#4c4546] hover:text-[#000000] transition-all duration-300" href="contact.html">Contact</a>
 </nav>
 <div class="flex-1"></div>
@@ -126,61 +137,52 @@
 <div class="flex flex-col gap-32">
 <!-- Project 01: Qwerties for Glitched -->
 <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-<div class="lg:col-span-4 sticky top-32">
+<div class="lg:col-span-5 sticky top-32">
 <h2 class="text-[1.5rem] font-semibold tracking-[-0.01em] mb-6">
-                        Qwerties for <a class="group/ext hover:opacity-60 transition-opacity" href="https://glitched.se/en/" target="_blank">Glitched<span class="inline-block opacity-0 group-hover/ext:opacity-100 transition-opacity text-[0.7em] align-super ml-0.5">↗</span></a>
+                        Qwerties for <a class="hover:opacity-50 transition-opacity" href="https://glitched.se/en/" target="_blank">Glitched<span class="inline-block text-[0.7em] align-super ml-0.5">↗</span></a>
 </h2>
 <p class="text-body-md text-on-surface-variant leading-relaxed max-w-md">
-                        A comprehensive digital exploration into modular keyboard aesthetics and experimental interface design. This project focuses on the intersection of tactile hardware and fluid digital motion.
+                        A 2026 digital exploration into modular keyboard aesthetics and experimental interface design for Glitched. This project focuses on the intersection of tactile hardware and fluid digital motion.
                     </p>
 </div>
-<div class="lg:col-span-8 relative group">
-<div class="gallery-container flex overflow-x-auto w-full gap-4 pb-4" id="carousel-qwerties">
-<!-- Slide 1 -->
-<div class="gallery-item w-full aspect-[16/10] bg-red-600 flex items-center justify-center text-white font-bold" data-alt="vibrant red solid color field representing a bold minimalist aesthetic">
-<span class="text-sm opacity-50">IMAGE_01</span>
+<div class="lg:col-span-7">
+<div class="gallery-container w-full aspect-[16/10]" id="carousel-qwerties">
+<div class="gallery-item"><img src="images/qwerties/qwertiesrenderhat.png" alt="Qwerties render with hat" class="w-full h-full object-cover"/></div>
+<div class="gallery-item"><img src="images/qwerties/qwertierenderhat.png" alt="Qwertie render with hat" class="w-full h-full object-cover"/></div>
+<div class="gallery-item"><img src="images/qwerties/qwertiepinkrender.png" alt="Qwertie pink render" class="w-full h-full object-cover"/></div>
+<div class="gallery-item"><img src="images/qwerties/qwertiegreenrender.png" alt="Qwertie green render" class="w-full h-full object-cover"/></div>
+<div class="gallery-item"><img src="images/qwerties/qwertieshat.jpg" alt="Qwerties with hats" class="w-full h-full object-cover"/></div>
+<div class="gallery-item"><img src="images/qwerties/qwertiescolour.jpg" alt="Qwerties colour lineup" class="w-full h-full object-cover"/></div>
+<div class="gallery-item"><img src="images/qwerties/qwertiesdefault.jpg" alt="Qwerties default figures" class="w-full h-full object-cover"/></div>
+<div class="gallery-item"><img src="images/qwerties/qwertiespdqbox.jpg" alt="Qwerties PDQ display box" class="w-full h-full object-cover"/></div>
+<div class="gallery-item"><img src="images/qwerties/qwertiespdqq.png" alt="Qwerties PDQ box open" class="w-full h-full object-cover"/></div>
+<div class="gallery-item"><img src="images/qwerties/qwertiespackaging.jpg" alt="Qwerties packaging" class="w-full h-full object-cover"/></div>
 </div>
-<!-- Slide 2 -->
-<div class="gallery-item w-full aspect-[16/10] bg-green-600 flex items-center justify-center text-white font-bold" data-alt="deep green solid color field representing organic growth and stability">
-<span class="text-sm opacity-50">IMAGE_02</span>
-</div>
-<!-- Slide 3 -->
-<div class="gallery-item w-full aspect-[16/10] bg-blue-600 flex items-center justify-center text-white font-bold" data-alt="bright blue solid color field representing digital precision and clarity">
-<span class="text-sm opacity-50">IMAGE_03</span>
-</div>
-<!-- Slide 4 -->
-<div class="gallery-item w-full aspect-[16/10] bg-yellow-400 flex items-center justify-center text-black font-bold" data-alt="sunny yellow solid color field representing energy and focal points">
-<span class="text-sm opacity-50">IMAGE_04</span>
-</div>
-<!-- Slide 5 -->
-<div class="gallery-item w-full aspect-[16/10] bg-purple-600 flex items-center justify-center text-white font-bold" data-alt="royal purple solid color field representing luxury and creative depth">
-<span class="text-sm opacity-50">IMAGE_05</span>
-</div>
-</div>
-<!-- Navigation Controls -->
-<div class="absolute inset-y-0 left-4 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
-<button aria-label="Previous Slide" class="bg-white/90 p-2 shadow-sm hover:bg-white transition-colors">
-<span class="material-symbols-outlined text-primary">chevron_left</span>
+<div class="flex items-center gap-4 mt-5">
+<button aria-label="Previous Slide" class="text-[#1b1c1c] hover:-translate-x-1 hover:opacity-50 transition-all duration-200 select-none">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l6-6M5 12l6 6"/></svg>
 </button>
-</div>
-<div class="absolute inset-y-0 right-4 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
-<button aria-label="Next Slide" class="bg-white/90 p-2 shadow-sm hover:bg-white transition-colors">
-<span class="material-symbols-outlined text-primary">chevron_right</span>
+<button aria-label="Next Slide" class="text-[#1b1c1c] hover:translate-x-1 hover:opacity-50 transition-all duration-200 select-none">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M14 6l6 6-6 6"/></svg>
 </button>
+<div class="flex items-center gap-1.5 ml-1">
+<div class="w-6 h-[2px] bg-primary indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
 </div>
-<!-- Pagination Indicators -->
-<div class="flex gap-2 mt-4 justify-center">
-<div class="w-8 h-1 bg-primary indicator-dot"></div>
-<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
-<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
-<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
-<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
 </div>
 </div>
 </article>
 <!-- Project 02: Stickerlounge -->
 <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-<div class="lg:col-span-4 sticky top-32 lg:order-2">
+<div class="lg:col-span-5 sticky top-32 lg:order-2">
 <h2 class="text-[1.5rem] font-semibold tracking-[-0.01em] mb-6">
                         Stickerlounge
                     </h2>
@@ -188,47 +190,28 @@
                         Redefining the e-commerce experience for physical art assets. Focus on ultra-clean typography and a friction-less checkout journey that mirrors the premium nature of the products.
                     </p>
 </div>
-<div class="lg:col-span-8 lg:order-1 relative group">
-<div class="gallery-container flex overflow-x-auto w-full gap-4 pb-4" id="carousel-stickerlounge">
-<!-- Slide 1 -->
-<div class="gallery-item w-full aspect-[16/10] bg-blue-600 flex items-center justify-center text-white font-bold" data-alt="bright blue solid color field representing digital precision and clarity">
-<span class="text-sm opacity-50">IMAGE_01</span>
+<div class="lg:col-span-7 lg:order-1">
+<div class="gallery-container w-full aspect-[16/10]" id="carousel-stickerlounge">
+<div class="gallery-item bg-blue-600 flex items-center justify-center text-white font-bold"><span class="text-sm opacity-50">IMAGE_01</span></div>
+<div class="gallery-item bg-red-600 flex items-center justify-center text-white font-bold"><span class="text-sm opacity-50">IMAGE_02</span></div>
+<div class="gallery-item bg-purple-600 flex items-center justify-center text-white font-bold"><span class="text-sm opacity-50">IMAGE_03</span></div>
+<div class="gallery-item bg-yellow-400 flex items-center justify-center text-black font-bold"><span class="text-sm opacity-50">IMAGE_04</span></div>
+<div class="gallery-item bg-green-600 flex items-center justify-center text-white font-bold"><span class="text-sm opacity-50">IMAGE_05</span></div>
 </div>
-<!-- Slide 2 -->
-<div class="gallery-item w-full aspect-[16/10] bg-red-600 flex items-center justify-center text-white font-bold" data-alt="vibrant red solid color field representing a bold minimalist aesthetic">
-<span class="text-sm opacity-50">IMAGE_02</span>
-</div>
-<!-- Slide 3 -->
-<div class="gallery-item w-full aspect-[16/10] bg-purple-600 flex items-center justify-center text-white font-bold" data-alt="royal purple solid color field representing luxury and creative depth">
-<span class="text-sm opacity-50">IMAGE_03</span>
-</div>
-<!-- Slide 4 -->
-<div class="gallery-item w-full aspect-[16/10] bg-yellow-400 flex items-center justify-center text-black font-bold" data-alt="sunny yellow solid color field representing energy and focal points">
-<span class="text-sm opacity-50">IMAGE_04</span>
-</div>
-<!-- Slide 5 -->
-<div class="gallery-item w-full aspect-[16/10] bg-green-600 flex items-center justify-center text-white font-bold" data-alt="deep green solid color field representing organic growth and stability">
-<span class="text-sm opacity-50">IMAGE_05</span>
-</div>
-</div>
-<!-- Navigation Controls -->
-<div class="absolute inset-y-0 left-4 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
-<button aria-label="Previous Slide" class="bg-white/90 p-2 shadow-sm hover:bg-white transition-colors">
-<span class="material-symbols-outlined text-primary">chevron_left</span>
+<div class="flex items-center gap-4 mt-5">
+<button aria-label="Previous Slide" class="text-[#1b1c1c] hover:-translate-x-1 hover:opacity-50 transition-all duration-200 select-none">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l6-6M5 12l6 6"/></svg>
 </button>
-</div>
-<div class="absolute inset-y-0 right-4 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
-<button aria-label="Next Slide" class="bg-white/90 p-2 shadow-sm hover:bg-white transition-colors">
-<span class="material-symbols-outlined text-primary">chevron_right</span>
+<button aria-label="Next Slide" class="text-[#1b1c1c] hover:translate-x-1 hover:opacity-50 transition-all duration-200 select-none">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M14 6l6 6-6 6"/></svg>
 </button>
+<div class="flex items-center gap-1.5 ml-1">
+<div class="w-6 h-[2px] bg-primary indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
+<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
 </div>
-<!-- Pagination Indicators -->
-<div class="flex gap-2 mt-4 justify-center">
-<div class="w-8 h-1 bg-primary indicator-dot"></div>
-<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
-<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
-<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
-<div class="w-8 h-1 bg-surface-container-highest indicator-dot"></div>
 </div>
 </div>
 </article>
@@ -257,35 +240,22 @@
     const prevBtn = wrapper.querySelector('[aria-label="Previous Slide"]');
     const nextBtn = wrapper.querySelector('[aria-label="Next Slide"]');
     const indicators = Array.from(wrapper.querySelectorAll('.indicator-dot'));
+    let current = 0;
 
-    const getActiveIndex = () => {
-      let closest = 0, minDist = Infinity;
-      items.forEach((item, i) => {
-        const dist = Math.abs(item.offsetLeft - container.scrollLeft);
-        if (dist < minDist) { minDist = dist; closest = i; }
-      });
-      return closest;
+    const goTo = (idx) => {
+      items[current].classList.remove('active');
+      indicators[current].classList.remove('bg-primary');
+      indicators[current].classList.add('bg-[#ddd]');
+      current = (idx + items.length) % items.length;
+      items[current].classList.add('active');
+      indicators[current].classList.remove('bg-[#ddd]');
+      indicators[current].classList.add('bg-primary');
     };
 
-    const updateIndicators = () => {
-      const active = getActiveIndex();
-      indicators.forEach((dot, i) => {
-        dot.classList.toggle('bg-primary', i === active);
-        dot.classList.toggle('bg-surface-container-highest', i !== active);
-      });
-    };
+    items[0].classList.add('active');
 
-    prevBtn.addEventListener('click', () => {
-      const idx = Math.max(getActiveIndex() - 1, 0);
-      container.scrollTo({ left: items[idx].offsetLeft, behavior: 'smooth' });
-    });
-
-    nextBtn.addEventListener('click', () => {
-      const idx = Math.min(getActiveIndex() + 1, items.length - 1);
-      container.scrollTo({ left: items[idx].offsetLeft, behavior: 'smooth' });
-    });
-
-    container.addEventListener('scroll', updateIndicators);
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
   }
 
   document.addEventListener('DOMContentLoaded', () => {
