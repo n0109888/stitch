@@ -3,9 +3,9 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<title>Services — nealCS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
       tailwind.config = {
@@ -87,29 +87,6 @@
             white-space: nowrap;
             direction: ltr;
         }
-        .gallery-container {
-            position: relative;
-            overflow: hidden;
-        }
-        .gallery-item {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transform: scale(1.04);
-            transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1),
-                        transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
-        }
-        .gallery-item.active {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: auto;
-        }
-        .indicator-dot {
-            transition: background-color 0.3s ease;
-        }
     nav a:focus { outline: none; }</style>
 </head>
 <body class="bg-background text-on-surface font-body antialiased">
@@ -118,148 +95,13 @@
 <div class="flex items-center px-8 py-10 max-w-[1440px] mx-auto w-full">
 <div class="flex-1 text-2xl font-bold tracking-tighter text-[#000000]">nealCS</div>
 <nav class="hidden md:flex items-center gap-12">
-<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#000000] border-b border-[#000000] pb-1" href="index.html">Projects</a>
-<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#4c4546] hover:text-[#000000] transition-all duration-300" href="services.html">Services</a>
+<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#000000] border-b border-[#000000] pb-1" href="index.html">Services</a>
+<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#4c4546] hover:text-[#000000] transition-all duration-300" href="projects.html">Projects</a>
 <a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#4c4546] hover:text-[#000000] transition-all duration-300" href="contact.html">Contact</a>
 </nav>
 <div class="flex-1"></div>
 </div>
 </header>
 <main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
-<!-- Hero Section -->
-<section class="mb-24">
-<h1 class="text-[3.5rem] font-bold tracking-[-0.02em] leading-tight text-primary">
-                Project Experience
-            </h1>
-<div class="h-px w-24 bg-primary mt-8"></div>
-</section>
-<!-- Projects Grid -->
-<div class="flex flex-col gap-32">
-<!-- Project 01: Qwerties for Glitched -->
-<article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-<div class="lg:col-span-5 sticky top-32">
-<h2 class="text-[1.5rem] font-semibold tracking-[-0.01em] mb-6">
-                        Qwerties for <a class="hover:opacity-50 transition-opacity" href="https://glitched.se/en/" target="_blank">Glitched<span class="inline-block text-[0.7em] align-super ml-0.5">↗</span></a>
-</h2>
-<p class="text-body-md text-on-surface-variant leading-relaxed max-w-md">
-                        A 2026 digital exploration into modular keyboard aesthetics and experimental interface design for Glitched. This project focuses on the intersection of tactile hardware and fluid digital motion.
-                    </p>
-</div>
-<div class="lg:col-span-7">
-<div class="gallery-container w-full aspect-[16/10]" id="carousel-qwerties">
-<div class="gallery-item"><img src="images/qwerties/qwertiesrenderhat.png" alt="Qwerties render with hat" class="w-full h-full object-cover"/></div>
-<div class="gallery-item"><img src="images/qwerties/qwertierenderhat.png" alt="Qwertie render with hat" class="w-full h-full object-cover"/></div>
-<div class="gallery-item"><img src="images/qwerties/qwertiepinkrender.png" alt="Qwertie pink render" class="w-full h-full object-cover"/></div>
-<div class="gallery-item"><img src="images/qwerties/qwertiegreenrender.png" alt="Qwertie green render" class="w-full h-full object-cover"/></div>
-<div class="gallery-item"><img src="images/qwerties/qwertieshat.jpg" alt="Qwerties with hats" class="w-full h-full object-cover"/></div>
-<div class="gallery-item"><img src="images/qwerties/qwertiescolour.jpg" alt="Qwerties colour lineup" class="w-full h-full object-cover"/></div>
-<div class="gallery-item"><img src="images/qwerties/qwertiesdefault.jpg" alt="Qwerties default figures" class="w-full h-full object-cover"/></div>
-<div class="gallery-item"><img src="images/qwerties/qwertiespdqbox.jpg" alt="Qwerties PDQ display box" class="w-full h-full object-cover"/></div>
-<div class="gallery-item"><img src="images/qwerties/qwertiespdqq.png" alt="Qwerties PDQ box open" class="w-full h-full object-cover"/></div>
-<div class="gallery-item"><img src="images/qwerties/qwertiespackaging.jpg" alt="Qwerties packaging" class="w-full h-full object-cover"/></div>
-</div>
-<div class="flex items-center gap-4 mt-5">
-<button aria-label="Previous Slide" class="text-[#1b1c1c] hover:-translate-x-1 hover:opacity-50 transition-all duration-200 select-none">
-<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l6-6M5 12l6 6"/></svg>
-</button>
-<button aria-label="Next Slide" class="text-[#1b1c1c] hover:translate-x-1 hover:opacity-50 transition-all duration-200 select-none">
-<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M14 6l6 6-6 6"/></svg>
-</button>
-<div class="flex items-center gap-1.5 ml-1">
-<div class="w-6 h-[2px] bg-primary indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-</div>
-</div>
-</div>
-</article>
-<!-- Project 02: Stickerlounge -->
-<article class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-<div class="lg:col-span-5 sticky top-32 lg:order-2">
-<h2 class="text-[1.5rem] font-semibold tracking-[-0.01em] mb-6">
-                        Stickerlounge
-                    </h2>
-<p class="text-body-md text-on-surface-variant leading-relaxed max-w-md">
-                        Redefining the e-commerce experience for physical art assets. Focus on ultra-clean typography and a friction-less checkout journey that mirrors the premium nature of the products.
-                    </p>
-</div>
-<div class="lg:col-span-7 lg:order-1">
-<div class="gallery-container w-full aspect-[16/10]" id="carousel-stickerlounge">
-<div class="gallery-item bg-blue-600 flex items-center justify-center text-white font-bold"><span class="text-sm opacity-50">IMAGE_01</span></div>
-<div class="gallery-item bg-red-600 flex items-center justify-center text-white font-bold"><span class="text-sm opacity-50">IMAGE_02</span></div>
-<div class="gallery-item bg-purple-600 flex items-center justify-center text-white font-bold"><span class="text-sm opacity-50">IMAGE_03</span></div>
-<div class="gallery-item bg-yellow-400 flex items-center justify-center text-black font-bold"><span class="text-sm opacity-50">IMAGE_04</span></div>
-<div class="gallery-item bg-green-600 flex items-center justify-center text-white font-bold"><span class="text-sm opacity-50">IMAGE_05</span></div>
-</div>
-<div class="flex items-center gap-4 mt-5">
-<button aria-label="Previous Slide" class="text-[#1b1c1c] hover:-translate-x-1 hover:opacity-50 transition-all duration-200 select-none">
-<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l6-6M5 12l6 6"/></svg>
-</button>
-<button aria-label="Next Slide" class="text-[#1b1c1c] hover:translate-x-1 hover:opacity-50 transition-all duration-200 select-none">
-<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M14 6l6 6-6 6"/></svg>
-</button>
-<div class="flex items-center gap-1.5 ml-1">
-<div class="w-6 h-[2px] bg-primary indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-<div class="w-6 h-[2px] bg-[#ddd] indicator-dot"></div>
-</div>
-</div>
-</div>
-</article>
-</div>
 </main>
-<!-- SideNavBar (Mobile) -->
-<aside class="hidden h-full w-64 border-r-0 bg-[#fbf9f9] dark:bg-black flex-col p-8 fixed left-0 top-0 z-[60] lg:hidden">
-<div class="text-lg font-bold text-black dark:text-white mb-2">nealCS</div>
-<div class="text-[0.75rem] font-['Inter'] uppercase tracking-[0.05em] text-neutral-400 dark:text-neutral-600 mb-12">Digital Curator</div>
-<nav class="flex flex-col gap-6">
-<a class="flex items-center gap-4 text-black dark:text-white font-bold uppercase tracking-[0.05em] text-[0.75rem]" href="index.html">
-<span class="material-symbols-outlined">work</span>
-                Projects
-            </a>
-<a class="flex items-center gap-4 text-neutral-400 dark:text-neutral-600 uppercase tracking-[0.05em] text-[0.75rem] hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all duration-300" href="contact.html">
-<span class="material-symbols-outlined">mail</span>
-                Contact
-            </a>
-</nav>
-</aside>
-<script>
-  function initCarousel(carouselId) {
-    const container = document.getElementById(carouselId);
-    const wrapper = container.parentElement;
-    const items = Array.from(container.querySelectorAll('.gallery-item'));
-    const prevBtn = wrapper.querySelector('[aria-label="Previous Slide"]');
-    const nextBtn = wrapper.querySelector('[aria-label="Next Slide"]');
-    const indicators = Array.from(wrapper.querySelectorAll('.indicator-dot'));
-    let current = 0;
-
-    const goTo = (idx) => {
-      items[current].classList.remove('active');
-      indicators[current].classList.remove('bg-primary');
-      indicators[current].classList.add('bg-[#ddd]');
-      current = (idx + items.length) % items.length;
-      items[current].classList.add('active');
-      indicators[current].classList.remove('bg-[#ddd]');
-      indicators[current].classList.add('bg-primary');
-    };
-
-    items[0].classList.add('active');
-
-    prevBtn.addEventListener('click', () => goTo(current - 1));
-    nextBtn.addEventListener('click', () => goTo(current + 1));
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    initCarousel('carousel-qwerties');
-    initCarousel('carousel-stickerlounge');
-  });
-</script></body></html>
+</body></html>

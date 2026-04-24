@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#e4e2e1",
+                    "on-surface": "#1b1c1c",
+                    "on-primary-fixed": "#1b1b1b",
+                    "outline": "#7e7576",
+                    "surface-container-low": "#f5f3f3",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "background": "#fbf9f9",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "surface-tint": "#5e5e5e",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#c6c6c6",
+                    "inverse-surface": "#303031",
+                    "surface-dim": "#dbdad9",
+                    "surface-container-high": "#e9e8e7",
+                    "on-tertiary-container": "#848483",
+                    "surface": "#fbf9f9",
+                    "on-primary-fixed-variant": "#474747",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#e4e2e2",
+                    "secondary-container": "#e4e2e1",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#848484",
+                    "primary-container": "#1b1b1b",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fbf9f9",
+                    "on-error": "#ffffff",
+                    "secondary": "#5f5e5e",
+                    "on-background": "#1b1c1c",
+                    "on-secondary-fixed-variant": "#474746",
+                    "surface-variant": "#e3e2e2",
+                    "on-secondary-container": "#656464",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "surface-container-highest": "#e3e2e2",
+                    "primary": "#000000",
+                    "surface-container": "#efeded",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "tertiary-container": "#1b1c1c",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#e2e2e2",
+                    "outline-variant": "#cfc4c5",
+                    "on-surface-variant": "#4c4546",
+                    "inverse-on-surface": "#f2f0f0",
+                    "tertiary": "#000000"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .gallery-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-item {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        .gallery-item.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .indicator-dot {
+            transition: background-color 0.3s ease;
+        }
+        nav a:focus { outline: none; }
+
+        .project-detail {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .project-detail.open {
+            grid-template-rows: 1fr;
+        }
+        .project-detail-inner {
+            overflow: hidden;
+        }
+        .project-row {
+            cursor: pointer;
+            user-select: none;
+        }
+        .project-row:hover .project-arrow {
+            transform: translateX(4px);
+        }
+        .project-row.active .project-arrow {
+            transform: rotate(90deg);
+        }
+        .project-arrow {
+            transition: transform 0.3s ease;
+        }
+        .project-row:hover .project-name {
+            opacity: 0.6;
+        }
+        .project-row.active .project-name {
+            opacity: 1;
+        }
+        @keyframes shimmer {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .coming-soon-text {
+            background: linear-gradient(110deg, #000000 0%, #666666 45%, #000000 100%);
+            background-size: 250% 250%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s ease infinite;
+        }
+
+        /* Section eyebrow labels */
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: #7e7576;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .section-label::before {
+            content: '';
+            width: 1.25rem;
+            height: 1px;
+            background: #1b1c1c;
+        }
+
+        /* Stat numbers with the same shimmer as coming-soon */
+        .stat-value {
+            background: linear-gradient(110deg, #000000 0%, #666666 45%, #000000 100%);
+            background-size: 250% 250%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s ease infinite;
+        }
+
+        /* Stat card reveal on open */
+        @keyframes stat-rise {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .project-detail.open .stat-card {
+            animation: stat-rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+        .project-detail.open .stat-card:nth-child(2) { animation-delay: 0.08s; }
+        .project-detail.open .stat-card:nth-child(3) { animation-delay: 0.16s; }
+
+        .stat-card {
+            position: relative;
+            padding: 1rem 1.25rem;
+            border: 1px solid rgba(27, 28, 28, 0.1);
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(239, 237, 237, 0.4) 100%);
+            overflow: hidden;
+        }
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            transition: left 0.8s ease;
+        }
+        .stat-card:hover::after { left: 150%; }
+
+        /* Gallery frame (premium look) */
+        .image-frame {
+            border-radius: 1rem;
+            background:
+                radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.9) 0%, transparent 55%),
+                linear-gradient(135deg, #f5f3f3 0%, #e3e2e2 100%);
+            border: 1px solid rgba(207, 196, 197, 0.6);
+            box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 20px 40px -24px rgba(0,0,0,0.15);
+        }
+
+        /* Subtle zoom on slide change */
+        .gallery-item {
+            transform: scale(1.04);
+            transition: opacity 0.5s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+        .gallery-item.active { transform: scale(1); }
+
+        /* Circular arrow buttons */
+        .arrow-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 9999px;
+            border: 1px solid rgba(27, 28, 28, 0.22);
+            color: #1b1c1c;
+            background: transparent;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        }
+        .arrow-btn svg { transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1); }
+        .arrow-btn:hover {
+            background: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+        .arrow-btn.prev:hover svg { transform: translateX(-3px); }
+        .arrow-btn.next:hover svg { transform: translateX(3px); }
+        .arrow-btn:active { transform: scale(0.94); }
+
+        /* Slide counter + progress */
+        .slide-counter {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            color: #1b1c1c;
+            font-variant-numeric: tabular-nums;
+        }
+        .slide-counter .slide-total { color: rgba(27, 28, 28, 0.4); }
+        .progress-track {
+            height: 2px;
+            background: rgba(27, 28, 28, 0.12);
+            overflow: hidden;
+            border-radius: 2px;
+            position: relative;
+        }
+        .progress-fill {
+            position: absolute;
+            top: 0; left: 0; height: 100%;
+            background: linear-gradient(90deg, #000000, #4a4a4a, #000000);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease infinite;
+            transition: width 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fbf9f9]/80 backdrop-blur-xl">
+<div class="flex items-center px-8 py-10 max-w-[1440px] mx-auto w-full">
+<div class="flex-1 text-2xl font-bold tracking-tighter text-[#000000]">nealCS</div>
+<nav class="hidden md:flex items-center gap-12">
+<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#4c4546] hover:text-[#000000] transition-all duration-300" href="index.html">Services</a>
+<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#000000] border-b border-[#000000] pb-1" href="projects.html">Projects</a>
+<a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#4c4546] hover:text-[#000000] transition-all duration-300" href="contact.html">Contact</a>
+</nav>
+<div class="flex-1"></div>
+</div>
+</header>
+
+<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
+    <!-- Hero Section -->
+    <section class="mb-16">
+        <h1 class="text-[3.5rem] font-bold tracking-[-0.02em] leading-tight text-primary">
+            Project Experience
+        </h1>
+        <div class="h-px w-24 bg-primary mt-8"></div>
+    </section>
+
+    <!-- Projects List -->
+    <div class="flex flex-col">
+
+        <!-- Project 01: Qwerties for Glitched -->
+        <div class="border-t border-[#e3e2e2]">
+            <div class="project-row flex items-center justify-between py-8 group" data-target="detail-qwerties">
+                <div class="flex items-baseline">
+                    <h2 class="project-name text-[1.75rem] font-semibold tracking-[-0.01em] transition-opacity duration-200">Qwerties for Glitched</h2>
+                </div>
+                <svg class="project-arrow w-6 h-6 text-[#1b1c1c] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M14 6l6 6-6 6"/>
+                </svg>
+            </div>
+            <div class="project-detail" id="detail-qwerties">
+                <div class="project-detail-inner">
+                    <div class="pb-16 pt-2 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        <div class="lg:col-span-5">
+                            <!-- Impact stats -->
+                            <div class="grid grid-cols-2 gap-3 mb-10">
+                                <div class="stat-card">
+                                    <div class="text-[0.6rem] uppercase tracking-[0.15em] text-on-surface-variant/70 font-semibold mb-1.5">Mold Cost</div>
+                                    <div class="flex items-baseline gap-1.5">
+                                        <span class="text-xs text-on-surface-variant/50 line-through">$3k</span>
+                                        <span class="stat-value text-[1.5rem] font-bold tracking-tight leading-none">$90</span>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="text-[0.6rem] uppercase tracking-[0.15em] text-on-surface-variant/70 font-semibold mb-1.5">Per Unit</div>
+                                    <div class="flex items-baseline gap-1.5">
+                                        <span class="text-xs text-on-surface-variant/50 line-through">$3</span>
+                                        <span class="stat-value text-[1.5rem] font-bold tracking-tight leading-none">$1</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Eyebrow-labeled paragraphs -->
+                            <div class="space-y-7 max-w-md">
+                                <div>
+                                    <div class="section-label mb-3">Overview</div>
+                                    <p class="text-body-md text-on-surface-variant leading-relaxed">
+                                        Supported Glitched throughout the full production of their Qwerties figure project, handling all factory communication across three suppliers in China covering the figures, PDQ display box, and packaging.
+                                    </p>
+                                </div>
+                                <div>
+                                    <div class="section-label mb-3">Sourcing &amp; Production</div>
+                                    <p class="text-body-md text-on-surface-variant leading-relaxed">
+                                        A member of their team reached out looking for help, every Alibaba supplier they'd tried was quoting around $3,000 USD for the mold and over $3/unit. I sourced a factory in Shenzhen that brought the mold cost down to under $90 and the unit price to roughly $1. Being based in China, I was able to verify the factory's legitimacy and experience with this type of small figure production. Once samples were ready I inspected them myself before confirming start of the production. When the figures arrived in Sweden, the Glitched team confirmed the quality exceeded expectations.
+                                    </p>
+                                </div>
+                                <div>
+                                    <div class="section-label mb-3">Beyond the Figures</div>
+                                    <p class="text-body-md text-on-surface-variant leading-relaxed">
+                                        While the figure sampling was still ongoing, they also needed help sourcing a PDQ box and packaging, got both produced quickly and to the same quality standard.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <a class="inline-flex items-center gap-2 mt-10 font-['Inter'] text-[0.75rem] uppercase tracking-[0.1em] font-semibold text-[#000000] hover:opacity-50 transition-opacity" href="https://glitched.se/en/" target="_blank">
+                                Visit Glitched
+                                <span class="text-[0.7em] align-super">↗</span>
+                            </a>
+                        </div>
+                        <div class="lg:col-span-7">
+                            <div class="image-frame relative overflow-hidden">
+                                <div class="gallery-container w-full aspect-[4/3]" id="carousel-qwerties">
+                                    <div class="gallery-item p-6"><img src="images/qwerties/qwertiesrenderhat.png" alt="Qwerties render with hat" class="w-full h-full object-contain"/></div>
+                                    <div class="gallery-item p-6"><img src="images/qwerties/qwertierenderhat.png" alt="Qwertie render with hat" class="w-full h-full object-contain"/></div>
+                                    <div class="gallery-item p-6"><img src="images/qwerties/qwertiepinkrender.png" alt="Qwertie pink render" class="w-full h-full object-contain"/></div>
+                                    <div class="gallery-item p-6"><img src="images/qwerties/qwertiegreenrender.png" alt="Qwertie green render" class="w-full h-full object-contain"/></div>
+                                    <div class="gallery-item p-6"><img src="images/qwerties/qwertieshat.jpg" alt="Qwerties with hats" class="w-full h-full object-contain"/></div>
+                                    <div class="gallery-item p-6"><img src="images/qwerties/qwertiescolour.jpg" alt="Qwerties colour lineup" class="w-full h-full object-contain"/></div>
+                                    <div class="gallery-item p-6"><img src="images/qwerties/qwertiesdefault.jpg" alt="Qwerties default figures" class="w-full h-full object-contain"/></div>
+                                    <div class="gallery-item p-6"><img src="images/qwerties/qwertiespdqbox.jpg" alt="Qwerties PDQ display box" class="w-full h-full object-contain"/></div>
+                                    <div class="gallery-item p-6"><img src="images/qwerties/qwertiespdqq.png" alt="Qwerties PDQ box open" class="w-full h-full object-contain"/></div>
+                                    <div class="gallery-item p-6"><img src="images/qwerties/qwertiespackaging.jpg" alt="Qwerties packaging" class="w-full h-full object-contain"/></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 mt-6">
+                                <button aria-label="Previous Slide" class="arrow-btn prev">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l6-6M5 12l6 6"/></svg>
+                                </button>
+                                <button aria-label="Next Slide" class="arrow-btn next">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M14 6l6 6-6 6"/></svg>
+                                </button>
+                                <div class="progress-track flex-1 mx-2">
+                                    <div class="progress-fill" style="width: 10%"></div>
+                                </div>
+                                <div class="slide-counter">
+                                    <span class="slide-current">01</span>
+                                    <span class="slide-total">/ 10</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 02: Stickerlounge -->
+        <div class="border-t border-[#e3e2e2]">
+            <div class="project-row flex items-center justify-between py-8 group" data-target="detail-stickerlounge">
+                <div class="flex items-baseline">
+                    <h2 class="project-name text-[1.75rem] font-semibold tracking-[-0.01em] transition-opacity duration-200">Stickerlounge</h2>
+                </div>
+                <svg class="project-arrow w-6 h-6 text-[#1b1c1c] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M14 6l6 6-6 6"/>
+                </svg>
+            </div>
+            <div class="project-detail" id="detail-stickerlounge">
+                <div class="project-detail-inner">
+                    <div class="pb-16 pt-4">
+                        <p class="coming-soon-text text-[2.5rem] sm:text-[3.75rem] lg:text-[5rem] font-bold tracking-[-0.03em] leading-[1.1]">
+                            Coming Soon,
+                        </p>
+                        <p class="coming-soon-text text-[2.5rem] sm:text-[3.75rem] lg:text-[5rem] font-bold tracking-[-0.03em] leading-[1.1] mt-1">
+                            Working Hard!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom border -->
+        <div class="border-t border-[#e3e2e2]"></div>
+    </div>
+</main>
+
+<!-- SideNavBar (Mobile) -->
+<aside class="hidden h-full w-64 border-r-0 bg-[#fbf9f9] dark:bg-black flex-col p-8 fixed left-0 top-0 z-[60] lg:hidden">
+<div class="text-lg font-bold text-black dark:text-white mb-2">nealCS</div>
+<div class="text-[0.75rem] font-['Inter'] uppercase tracking-[0.05em] text-neutral-400 dark:text-neutral-600 mb-12">Digital Curator</div>
+<nav class="flex flex-col gap-6">
+<a class="flex items-center gap-4 text-black dark:text-white font-bold uppercase tracking-[0.05em] text-[0.75rem]" href="index.html">
+<span class="material-symbols-outlined">work</span>
+                Projects
+            </a>
+<a class="flex items-center gap-4 text-neutral-400 dark:text-neutral-600 uppercase tracking-[0.05em] text-[0.75rem] hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all duration-300" href="contact.html">
+<span class="material-symbols-outlined">mail</span>
+                Contact
+            </a>
+</nav>
+</aside>
+
+<script>
+  function initCarousel(carouselId) {
+    const container = document.getElementById(carouselId);
+    if (!container || container.dataset.initialized === 'true') return;
+    container.dataset.initialized = 'true';
+
+    const scope = container.closest('.project-detail') || container.parentElement;
+    const items = Array.from(container.querySelectorAll('.gallery-item'));
+    const prevBtn = scope.querySelector('[aria-label="Previous Slide"]');
+    const nextBtn = scope.querySelector('[aria-label="Next Slide"]');
+    const progressFill = scope.querySelector('.progress-fill');
+    const currentLabel = scope.querySelector('.slide-current');
+    const totalLabel = scope.querySelector('.slide-total');
+    let current = 0;
+
+    const pad = (n) => String(n).padStart(2, '0');
+    if (totalLabel) totalLabel.textContent = '/ ' + pad(items.length);
+
+    const update = () => {
+      if (progressFill) progressFill.style.width = (((current + 1) / items.length) * 100) + '%';
+      if (currentLabel) currentLabel.textContent = pad(current + 1);
+    };
+
+    const goTo = (idx) => {
+      items[current].classList.remove('active');
+      current = (idx + items.length) % items.length;
+      items[current].classList.add('active');
+      update();
+    };
+
+    items[0].classList.add('active');
+    update();
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const rows = document.querySelectorAll('.project-row');
+    let openId = null;
+
+    rows.forEach(row => {
+      row.addEventListener('click', () => {
+        const targetId = row.dataset.target;
+        const detail = document.getElementById(targetId);
+
+        if (openId && openId !== targetId) {
+          const prevDetail = document.getElementById(openId);
+          const prevRow = document.querySelector(`[data-target="${openId}"]`);
+          prevDetail.classList.remove('open');
+          prevRow.classList.remove('active');
+        }
+
+        const isOpen = detail.classList.contains('open');
+        detail.classList.toggle('open', !isOpen);
+        row.classList.toggle('active', !isOpen);
+        openId = isOpen ? null : targetId;
+
+        if (!isOpen) {
+          if (targetId === 'detail-qwerties') initCarousel('carousel-qwerties');
+        }
+      });
+    });
+  });
+</script>
+</body></html>
