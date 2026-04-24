@@ -4,6 +4,18 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Projects</title>
+<script src="auth.js"></script>
+<script>
+    // Apply persisted theme before first paint to avoid flash.
+    (function(){
+        try {
+            var t = sessionStorage.getItem('theme') || 'light';
+            var h = document.documentElement;
+            h.classList.toggle('dark', t === 'dark');
+            h.classList.toggle('light', t !== 'dark');
+        } catch (e) {}
+    })();
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -274,6 +286,131 @@
             animation: shimmer 3s ease infinite;
             transition: width 0.55s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        /* Theme switch (top-right) */
+        .theme-switch {
+            position: relative;
+            width: 52px;
+            height: 28px;
+            border-radius: 9999px;
+            border: 1px solid rgba(27, 28, 28, 0.18);
+            background: rgba(27, 28, 28, 0.04);
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+            transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s ease;
+        }
+        .theme-switch:hover { background: rgba(27, 28, 28, 0.09); }
+        .theme-switch:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+        .theme-switch-thumb {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
+            border-radius: 9999px;
+            background: #1b1c1c;
+            color: #fbf9f9;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition:
+                transform 0.55s cubic-bezier(0.68, -0.35, 0.27, 1.45),
+                background 0.4s ease,
+                color 0.4s ease,
+                box-shadow 0.4s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+        }
+        .theme-switch-thumb .theme-sun,
+        .theme-switch-thumb .theme-moon {
+            position: absolute;
+            transition: opacity 0.35s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .theme-switch-thumb .theme-sun { opacity: 1; transform: rotate(0deg) scale(1); }
+        .theme-switch-thumb .theme-moon { opacity: 0; transform: rotate(-90deg) scale(0.4); }
+
+        /* ---- Dark mode ---- */
+        html, body { transition: background-color 0.5s ease, color 0.5s ease; }
+
+        html.dark body {
+            background-color: #0e0f12 !important;
+            color: #eaeaea !important;
+        }
+        html.dark header.fixed {
+            background-color: rgba(14, 15, 18, 0.72) !important;
+        }
+        html.dark header .text-\[\#000000\] { color: #eaeaea !important; }
+        html.dark nav a { transition: color 0.3s ease, border-color 0.3s ease; }
+        html.dark nav a.text-\[\#4c4546\] { color: #8a8782 !important; }
+        html.dark nav a.text-\[\#000000\] { color: #ffffff !important; }
+        html.dark nav a.border-\[\#000000\] { border-color: #ffffff !important; }
+        html.dark nav a.text-\[\#4c4546\]:hover { color: #ffffff !important; }
+
+        html.dark h1.text-primary, html.dark .text-primary { color: #ffffff !important; }
+        html.dark .bg-primary { background-color: #ffffff !important; }
+        html.dark .border-\[\#e3e2e2\] { border-color: #23252c !important; }
+        html.dark .project-name { color: #eaeaea; }
+        html.dark .project-arrow { color: #eaeaea !important; }
+        html.dark .text-on-surface-variant,
+        html.dark .text-body-md.text-on-surface-variant { color: #a8a6a2 !important; }
+
+        html.dark .coming-soon-text,
+        html.dark .stat-value {
+            background: linear-gradient(110deg, #ffffff 0%, #8a8a8a 45%, #ffffff 100%) !important;
+            background-size: 250% 250% !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+        html.dark .section-label { color: #6f6d69; }
+        html.dark .section-label::before { background: #eaeaea; }
+
+        html.dark .stat-card {
+            border: 1px solid rgba(234, 234, 234, 0.08);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
+        }
+        html.dark .stat-card::after {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+        }
+        html.dark .image-frame {
+            background:
+                radial-gradient(ellipse at 30% 0%, rgba(255, 255, 255, 0.06) 0%, transparent 55%),
+                linear-gradient(135deg, #17181c 0%, #21232a 100%);
+            border: 1px solid rgba(234, 234, 234, 0.08);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 20px 40px -24px rgba(0, 0, 0, 0.6);
+        }
+        html.dark .arrow-btn {
+            border-color: rgba(234, 234, 234, 0.22);
+            color: #eaeaea;
+        }
+        html.dark .arrow-btn:hover {
+            background: #ffffff;
+            color: #0e0f12;
+            border-color: #ffffff;
+        }
+        html.dark .slide-counter { color: #eaeaea; }
+        html.dark .slide-counter .slide-total { color: rgba(234, 234, 234, 0.4); }
+        html.dark .progress-track { background: rgba(234, 234, 234, 0.12); }
+        html.dark .progress-fill {
+            background: linear-gradient(90deg, #ffffff, #9a9a9a, #ffffff);
+            background-size: 200% 100%;
+        }
+
+        html.dark a.text-\[\#000000\] { color: #ffffff !important; }
+
+        html.dark .theme-switch {
+            background: rgba(234, 234, 234, 0.08);
+            border-color: rgba(234, 234, 234, 0.2);
+        }
+        html.dark .theme-switch:hover { background: rgba(234, 234, 234, 0.15); }
+        html.dark .theme-switch-thumb {
+            transform: translateX(24px);
+            background: #f0eeea;
+            color: #0e0f12;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        html.dark .theme-switch-thumb .theme-sun { opacity: 0; transform: rotate(90deg) scale(0.4); }
+        html.dark .theme-switch-thumb .theme-moon { opacity: 1; transform: rotate(0deg) scale(1); }
     </style>
 </head>
 <body class="bg-background text-on-surface font-body antialiased">
@@ -286,7 +423,28 @@
 <a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#000000] border-b border-[#000000] pb-1" href="projects.html">Projects</a>
 <a class="font-['Inter'] uppercase tracking-[0.1em] text-[0.75rem] font-semibold text-[#4c4546] hover:text-[#000000] transition-all duration-300" href="contact.html">Contact</a>
 </nav>
-<div class="flex-1"></div>
+<div class="flex-1 flex justify-end">
+<button id="theme-toggle" class="theme-switch" role="switch" aria-checked="false" aria-label="Toggle dark mode" type="button">
+<span class="theme-switch-thumb">
+<svg class="theme-sun" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">
+<circle cx="12" cy="12" r="4" fill="currentColor"></circle>
+<g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+<line x1="12" y1="2" x2="12" y2="4"></line>
+<line x1="12" y1="20" x2="12" y2="22"></line>
+<line x1="2" y1="12" x2="4" y2="12"></line>
+<line x1="20" y1="12" x2="22" y2="12"></line>
+<line x1="4.9" y1="4.9" x2="6.3" y2="6.3"></line>
+<line x1="17.7" y1="17.7" x2="19.1" y2="19.1"></line>
+<line x1="4.9" y1="19.1" x2="6.3" y2="17.7"></line>
+<line x1="17.7" y1="6.3" x2="19.1" y2="4.9"></line>
+</g>
+</svg>
+<svg class="theme-moon" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">
+<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"></path>
+</svg>
+</span>
+</button>
+</div>
 </div>
 </header>
 
@@ -337,19 +495,16 @@
                             <!-- Eyebrow-labeled paragraphs -->
                             <div class="space-y-7 max-w-md">
                                 <div>
-                                    <div class="section-label mb-3">Overview</div>
                                     <p class="text-body-md text-on-surface-variant leading-relaxed">
                                         Supported Glitched throughout the full production of their Qwerties figure project, handling all factory communication across three suppliers in China covering the figures, PDQ display box, and packaging.
                                     </p>
                                 </div>
                                 <div>
-                                    <div class="section-label mb-3">Sourcing &amp; Production</div>
                                     <p class="text-body-md text-on-surface-variant leading-relaxed">
                                         A member of their team reached out looking for help, every Alibaba supplier they'd tried was quoting around $3,000 USD for the mold and over $3/unit. I sourced a factory in Shenzhen that brought the mold cost down to under $90 and the unit price to roughly $1. Being based in China, I was able to verify the factory's legitimacy and experience with this type of small figure production. Once samples were ready I inspected them myself before confirming start of the production. When the figures arrived in Sweden, the Glitched team confirmed the quality exceeded expectations.
                                     </p>
                                 </div>
                                 <div>
-                                    <div class="section-label mb-3">Beyond the Figures</div>
                                     <p class="text-body-md text-on-surface-variant leading-relaxed">
                                         While the figure sampling was still ongoing, they also needed help sourcing a PDQ box and packaging, got both produced quickly and to the same quality standard.
                                     </p>
@@ -478,7 +633,29 @@
     nextBtn.addEventListener('click', () => goTo(current + 1));
   }
 
+  // Persist theme across page navigation via sessionStorage.
+  // Fresh visits (no session) always start in light mode.
+  (function(){
+    const h = document.documentElement;
+    let theme = 'light';
+    try { theme = sessionStorage.getItem('theme') || 'light'; } catch (e) {}
+    h.classList.toggle('dark', theme === 'dark');
+    h.classList.toggle('light', theme !== 'dark');
+  })();
+
   document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      const isDarkNow = document.documentElement.classList.contains('dark');
+      themeToggle.setAttribute('aria-checked', String(isDarkNow));
+      themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        document.documentElement.classList.toggle('light', !isDark);
+        themeToggle.setAttribute('aria-checked', String(isDark));
+        try { sessionStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (e) {}
+      });
+    }
+
     const rows = document.querySelectorAll('.project-row');
     let openId = null;
 
