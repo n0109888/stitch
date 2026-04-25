@@ -5,7 +5,14 @@
     var PW_HASH = 'f95e792cc5747f04adf5d0165dcf0428b4d220ad6fc0e5fd164562f502f68e0f';
 
     function isAuthed() {
-        try { return sessionStorage.getItem(KEY) === 'ok'; } catch (e) { return false; }
+        try {
+            if (localStorage.getItem(KEY) === 'ok') return true;
+            if (sessionStorage.getItem(KEY) === 'ok') {
+                try { localStorage.setItem(KEY, 'ok'); } catch (e) {}
+                return true;
+            }
+        } catch (e) {}
+        return false;
     }
     if (isAuthed()) return;
 
@@ -45,15 +52,6 @@
         '  color: #000000; margin-bottom: 3rem;',
         '  transition: color 0.4s ease;',
         '}',
-        '.auth-gate-eyebrow {',
-        '  font-size: 0.62rem; font-weight: 600; text-transform: uppercase;',
-        '  letter-spacing: 0.22em; color: #7e7576;',
-        '  margin-bottom: 1.2rem; display: inline-flex; align-items: center; gap: 0.6rem;',
-        '}',
-        '.auth-gate-eyebrow::before {',
-        '  content: ""; width: 1.25rem; height: 1px; background: #1b1c1c;',
-        '  transition: background-color 0.4s ease;',
-        '}',
         '.auth-gate-form {',
         '  display: flex; align-items: center; gap: 0.75rem;',
         '  border-bottom: 1px solid rgba(27, 28, 28, 0.3);',
@@ -65,6 +63,15 @@
         '  font-family: inherit; font-size: 1.1rem; color: #1b1c1c;',
         '  padding: 0.5rem 0; letter-spacing: 0.02em;',
         '  transition: color 0.4s ease;',
+        '  box-shadow: none;',
+        '  --tw-ring-shadow: 0 0 #0000;',
+        '  --tw-ring-offset-shadow: 0 0 #0000;',
+        '}',
+        '.auth-gate-input:focus, .auth-gate-input:focus-visible {',
+        '  outline: none !important; box-shadow: none !important;',
+        '  --tw-ring-shadow: 0 0 #0000 !important;',
+        '  --tw-ring-offset-shadow: 0 0 #0000 !important;',
+        '  border-color: transparent;',
         '}',
         '.auth-gate-input::placeholder { color: #a8a5a0; font-weight: 300; }',
         '.auth-gate-submit {',
@@ -93,8 +100,6 @@
         '.auth-gate.shake .auth-gate-card { animation: gate-shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97); }',
         'html.dark .auth-gate { background: #0e0f12; }',
         'html.dark .auth-gate-brand { color: #ffffff; }',
-        'html.dark .auth-gate-eyebrow { color: #6f6d69; }',
-        'html.dark .auth-gate-eyebrow::before { background: #eaeaea; }',
         'html.dark .auth-gate-form { border-bottom-color: rgba(234, 234, 234, 0.3); }',
         'html.dark .auth-gate-form:focus-within { border-color: #ffffff; }',
         'html.dark .auth-gate-input { color: #eaeaea; }',
@@ -108,9 +113,8 @@
         '<div id="auth-gate" class="auth-gate" role="dialog" aria-modal="true" aria-label="Password required">',
         '  <div class="auth-gate-card">',
         '    <div class="auth-gate-brand">nealCS</div>',
-        '    <div class="auth-gate-eyebrow">Private preview</div>',
         '    <form id="auth-gate-form" class="auth-gate-form" autocomplete="off" novalidate>',
-        '      <input id="auth-gate-input" class="auth-gate-input" type="password" placeholder="password" required autocomplete="off" spellcheck="false" aria-label="Password"/>',
+        '      <input id="auth-gate-input" class="auth-gate-input" type="password" placeholder="Enter password" required autocomplete="off" spellcheck="false" aria-label="Password"/>',
         '      <button type="submit" class="auth-gate-submit" aria-label="Unlock">',
         '        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M14 6l6 6-6 6"/></svg>',
         '      </button>',
@@ -143,6 +147,7 @@
             var hash = null;
             try { hash = await sha256(input.value); } catch (ex) {}
             if (hash === PW_HASH) {
+                try { localStorage.setItem(KEY, 'ok'); } catch (ex) {}
                 try { sessionStorage.setItem(KEY, 'ok'); } catch (ex) {}
                 gate.classList.add('leaving');
                 setTimeout(function () {

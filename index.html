@@ -270,7 +270,7 @@
         background: #1b1c1c;
     }
     .finale-text {
-        font-size: clamp(3rem, 10vw, 7.5rem);
+        font-size: clamp(2.1rem, 7vw, 5.25rem);
         font-weight: 700;
         letter-spacing: -0.035em;
         line-height: 1.02;
@@ -282,6 +282,24 @@
         animation: shimmer 4s ease infinite;
         opacity: 0;
         transform: translateY(28px);
+        transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+                    transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .finale-subtext {
+        margin-top: 1.75rem;
+        max-width: 44rem;
+        font-size: clamp(0.95rem, 1.35vw, 1.2rem);
+        font-weight: 500;
+        line-height: 1.65;
+        letter-spacing: -0.005em;
+        background: linear-gradient(110deg, #000000 0%, #666666 45%, #000000 100%);
+        background-size: 250% 250%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 4s ease infinite;
+        opacity: 0;
+        transform: translateY(16px);
         transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
                     transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
@@ -301,8 +319,67 @@
                     transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     .finale.in-view .finale-label  { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }
-    .finale.in-view .finale-text   { opacity: 1; transform: translateY(0); transition-delay: 0.18s; }
-    .finale.in-view .finale-sub    { opacity: 1; transform: translateY(0); transition-delay: 0.45s; }
+    .finale.in-view .finale-text    { opacity: 1; transform: translateY(0); transition-delay: 0.18s; }
+    .finale.in-view .finale-subtext { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
+    .finale.in-view .finale-sub     { opacity: 1; transform: translateY(0); transition-delay: 0.45s; }
+
+    /* Page hero (top of page) — same shimmer style as finale */
+    .page-hero {
+        margin-bottom: 5rem;
+    }
+    .page-hero-title {
+        font-size: clamp(2.1rem, 7vw, 5.25rem);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        line-height: 1.15;
+        padding-bottom: 0.05em;
+        background: linear-gradient(110deg, #000000 0%, #666666 45%, #000000 100%);
+        background-size: 250% 250%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 4s ease infinite, hero-rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+    .page-hero-subtext {
+        margin-top: 1.75rem;
+        max-width: 44rem;
+        font-size: clamp(0.95rem, 1.35vw, 1.2rem);
+        font-weight: 500;
+        line-height: 1.65;
+        letter-spacing: -0.005em;
+        background: linear-gradient(110deg, #000000 0%, #666666 45%, #000000 100%);
+        background-size: 250% 250%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 4s ease infinite, hero-rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both;
+    }
+    .page-hero-title .flag {
+        background: none;
+        -webkit-background-clip: initial;
+        background-clip: initial;
+        -webkit-text-fill-color: initial;
+        animation: none;
+        margin-left: 0.25rem;
+    }
+    @keyframes hero-rise {
+        from { opacity: 0; transform: translateY(28px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    html.dark .page-hero-title,
+    html.dark .page-hero-subtext {
+        background: linear-gradient(110deg, #ffffff 0%, #8a8a8a 45%, #ffffff 100%);
+        background-size: 250% 250%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    html.dark .page-hero-title .flag {
+        -webkit-text-fill-color: initial;
+        background: none;
+        -webkit-background-clip: initial;
+        background-clip: initial;
+    }
 
     @media (max-width: 640px) {
         .timeline-step {
@@ -403,6 +480,13 @@
         background-clip: text;
         -webkit-text-fill-color: transparent;
     }
+    html.dark .finale-subtext {
+        background: linear-gradient(110deg, #ffffff 0%, #8a8a8a 45%, #ffffff 100%);
+        background-size: 250% 250%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
     html.dark .finale-sub { color: #a8a6a2; }
 
     html.dark .theme-switch {
@@ -456,6 +540,16 @@
 </header>
 
 <main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
+    <!-- Page hero -->
+    <section class="page-hero">
+        <h1 class="page-hero-title">
+            Sourcing in China
+        </h1>
+        <p class="page-hero-subtext">
+            We mainly focus on the CS and gaming community and can handle the entire process for you, from sampling to delivery.
+        </p>
+    </section>
+
     <!-- Timeline -->
     <div class="timeline">
         <div class="timeline-track"></div>
@@ -528,6 +622,9 @@
         <h2 class="finale-text">
             fixed transparent fee.
         </h2>
+        <p class="finale-subtext">
+            Depending on the work required for the project I will charge a fixed fee, which will be mentioned clearly before we work together. There will be no other additional fees.
+        </p>
     </section>
 </main>
 
